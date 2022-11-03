@@ -43,6 +43,7 @@ class ProductDatabaseHelper(context: Context) :
         val selectProductQuery = "SELECT * FROM $TABLE_NAME WHERE $KEY_ID = $id"
         val db = this.readableDatabase
         val cursor: Cursor = db.rawQuery(selectProductQuery, null)
+        cursor.moveToNext()
         val product = ProductModel(
             id = cursor.getInt(cursor.getColumnIndex(KEY_ID)),
             name = cursor.getString(cursor.getColumnIndex(KEY_NAME)),
